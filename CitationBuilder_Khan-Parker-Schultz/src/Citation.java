@@ -11,10 +11,12 @@ public class Citation {
 	private String website;
 	private String webPublishDate;
 	private String url;
-	private String bookPublishYear;
+	private int bookPublishYear;
 	private int pageNumber;
 	
-	public Citation(String bookname, String authfname, String authlname, String publishername, String year, int page){
+	
+//book constructor	
+	public Citation(String bookname, String authfname, String authlname, String publishername, int year, int page){
 		
 		bookTitle = bookname;
 		authorFName = authfname;
@@ -25,7 +27,8 @@ public class Citation {
 		
 	}
 	
-	public Citation(String bookname, String authfname1, String authlname1, String authfname2, String authlname2, String publishername, String year, int page){
+//book with two authors constructor (if we want)
+	public Citation(String bookname, String authfname1, String authlname1, String authfname2, String authlname2, String publishername, int year, int page){
 		
 		bookTitle = bookname;
 		authorFName = authfname1;
@@ -37,7 +40,8 @@ public class Citation {
 		pageNumber = page;
 		
 	}
-	
+
+//website article constructor
 	public Citation(String articlename, String authfname, String authlname, String websitename, String publishdate, String url){
 		
 		articleTitle = articlename;
@@ -48,16 +52,39 @@ public class Citation {
 		this.url = url;
 		
 	}
-	
+
+//make sure dates are entered correctly??
 	public boolean validDateReader(){
 		
 		return true;
 	}
+	
+//italicize	
+	public String htmlItalicize(String word){
+		
+		return word;
+	}
+	
+//add quotes
+	public String addQuotes(String word){
+		
+		return word;
+	}
 
-	public String toString(){
+	
+//print out a book citation
+	public String bookToString(String bookname, String authorfname, String authorlname, String publishername, int year, int page){
 
+		Citation MLABook = new Citation(bookname, authorfname, authorlname, publishername, year, page);
+				
 		return "toString";
 	}
 	
-}
+//print out an article citation
+	public String articleToString(String articlename, String authorfname, String authorlname,  String websitename, String publishdate, String url){
 
+		Citation MLAArticle = new Citation(articlename, authorfname, authorlname, websitename, publishdate, url);
+		
+	return "toString";
+}
+}

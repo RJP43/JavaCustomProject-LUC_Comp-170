@@ -8,7 +8,7 @@ public class MyCitations {
 
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
-			String htmlTemplateStart = "<html><head><title>My Citations</title></head>\n<body>";
+			String htmlTemplateStart = "<html><head><title>My Citations</title></head>\n<body><h1>My Citations</h1>";
 			String content = "<em>Test<em>"; /*This variable will change to pull in the toString contents*/
 			String htmlTemplateEnd = "</body></html>";
 
