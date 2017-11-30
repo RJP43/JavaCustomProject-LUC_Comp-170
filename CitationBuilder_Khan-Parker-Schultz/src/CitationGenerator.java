@@ -77,13 +77,21 @@ public class CitationGenerator {
 			System.out.println("Enter the publisher of your source.");
 			publisher = userInput.nextLine();
 			
+			// Ask for city of publication
+			System.out.println("Enter the city the book was published in.");
+			city = userInput.nextLine();
+			
 			// Ask for date published
 			System.out.println("Enter the year the book was published.");
 			yearBookPublished = userInput.nextInt();
 			
-			// Ask for city of publication
-			System.out.println("Enter the city the book was published in.");
-			city = userInput.nextLine();
+			//blank input to avoid skipped line bug
+			userInput.nextLine();
+			
+			Citation bookCitation;
+			bookCitation = new Citation(title, authorFName, authorLName, publisher, yearBookPublished, city);
+			System.out.println(bookCitation.bookToString());
+			
 		}
 		else if ((sourceType.equalsIgnoreCase("website"))){
 			//Ask for website URL
@@ -98,9 +106,7 @@ public class CitationGenerator {
 			System.out.println("When did you access this site?");
 			webAccessDate = userInput.nextLine();
 		}
-		Citation bookCitation;
-		bookCitation = new Citation(title, authorFName, authorLName, publisher, yearBookPublished, city);
-		System.out.println(bookCitation.bookToString());
+		
 		
 		System.out.println("Would you like to run the program again? ");
 		response = userInput.nextLine();

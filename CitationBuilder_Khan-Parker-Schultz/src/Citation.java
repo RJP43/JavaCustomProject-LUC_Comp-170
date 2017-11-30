@@ -84,7 +84,7 @@ public class Citation {
 		
 		toString = authorLName + ", " + authorFName + ". " + bookTitle + ". " + bookCity + ": " + bookPublisher + ", " + bookPublishYear + ". Print.";
 				
-		return "<p>" + toString + "</p>";
+		return toString;
 	}
 	
 	
@@ -95,6 +95,6 @@ public class Citation {
 		
 		toString = articleTitle + " " + website + ". " + webPublisher + ", " + webPublishDate + ". Web. " + accessDate + ". \r" + url;
 		
-	return "<p>" + toString + "</p>";
+	return toString;
 }
 }
