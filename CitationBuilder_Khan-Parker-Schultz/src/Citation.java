@@ -27,19 +27,19 @@ public class Citation {
 		
 	}
 	
-//book with two authors constructor (if we want)
-	public Citation(String bookname, String authfname1, String authlname1, String authfname2, String authlname2, String publishername, int year, int page){
-		
-		bookTitle = bookname;
-		authorFName = authfname1;
-		authorLName = authlname1;
-		author2FName = authfname2;
-		author2LName = authlname2;
-		publisher = publishername;
-		bookPublishYear = year;
-		pageNumber = page;
-		
-	}
+////book with two authors constructor (if we want)
+//	public Citation(String bookname, String authfname1, String authlname1, String authfname2, String authlname2, String publishername, int year, int page){
+//		
+//		bookTitle = bookname;
+//		authorFName = authfname1;
+//		authorLName = authlname1;
+//		author2FName = authfname2;
+//		author2LName = authlname2;
+//		publisher = publishername;
+//		bookPublishYear = year;
+//		pageNumber = page;
+//		
+//	}
 
 //website article constructor
 	public Citation(String articlename, String authfname, String authlname, String websitename, String publishdate, String url){
@@ -53,38 +53,48 @@ public class Citation {
 		
 	}
 
-//make sure dates are entered correctly??
-	public boolean validDateReader(){
-		
-		return true;
+////make sure dates are entered correctly??
+//	public boolean validDateReader(){
+//		
+//		
+//		return true;
+//	}
+	
+//italicize	booktitle
+	public String htmlBookItalicize(){
+		String italicized = bookTitle;
+		italicized = "<em>" + italicized + "</em>";
+		return italicized;
 	}
 	
-//italicize	
-	public String htmlItalicize(String word){
-		
-		return word;
-	}
+//italicize	website publisher
+	public String htmlWebItalicize(){
+		String italicized = website;
+		italicized = "<em>" + italicized + "</em>";
+		return italicized;
+	}	
 	
 //add quotes
-	public String addQuotes(String word){
-		
-		return word;
-	}
+	public String htmlWebQuotes(){
+		String quoted = articleTitle;
+		quoted = "<&ldquo>" + quoted + "<&rdquo>";
+		return quoted;
+	}	
 
 	
-//print out a book citation
-	public String bookToString(String bookname, String authorfname, String authorlname, String publishername, int year, int page){
-
-		Citation MLABook = new Citation(bookname, authorfname, authorlname, publishername, year, page);
-				
-		return "toString";
-	}
-	
-//print out an article citation
-	public String articleToString(String articlename, String authorfname, String authorlname,  String websitename, String publishdate, String url){
-
-		Citation MLAArticle = new Citation(articlename, authorfname, authorlname, websitename, publishdate, url);
-		
-	return "toString";
-}
+////print out a book citation
+//	public String bookToString(String bookname, String authorfname, String authorlname, String publishername, int year, int page){
+//
+//		Citation MLABook = new Citation(bookname, authorfname, authorlname, publishername, year, page);
+//				
+//		return "toString";
+//	}
+//	
+////print out an article citation
+//	public String articleToString(String articlename, String authorfname, String authorlname,  String websitename, String publishdate, String url){
+//
+//		Citation MLAArticle = new Citation(articlename, authorfname, authorlname, websitename, publishdate, url);
+//		
+//	return "toString";
+//}
 }
