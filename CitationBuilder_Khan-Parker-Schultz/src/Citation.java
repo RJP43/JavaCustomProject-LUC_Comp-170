@@ -1,100 +1,100 @@
 
 public class Citation {
 	
+//book instance variables		
 	private String authorFName;
 	private String authorLName;
-	private String author2FName;
-	private String author2LName;
 	private String bookTitle;
-	private String articleTitle;
-	private String publisher;
-	private String website;
-	private String webPublishDate;
-	private String url;
+	private String bookPublisher;
 	private int bookPublishYear;
-	private int pageNumber;
+	private String bookCity;
+	
+//website article instance variables	
+	private String articleTitle;
+	private String website;
+	private String webPublisher;
+	private String webPublishDate;
+	private String accessDate;
+	private String url;
 	
 	
 //book constructor	
-	public Citation(String bookname, String authfname, String authlname, String publishername, int year, int page){
+	public Citation(String bookname, String authfname, String authlname, String publishername, int year, String city){
 		
 		bookTitle = bookname;
 		authorFName = authfname;
 		authorLName = authlname;
-		publisher = publishername;
+		bookPublisher = publishername;
 		bookPublishYear = year;
-		pageNumber = page;
+		bookCity = city;
 		
 	}
-	
-////book with two authors constructor (if we want)
-//	public Citation(String bookname, String authfname1, String authlname1, String authfname2, String authlname2, String publishername, int year, int page){
-//		
-//		bookTitle = bookname;
-//		authorFName = authfname1;
-//		authorLName = authlname1;
-//		author2FName = authfname2;
-//		author2LName = authlname2;
-//		publisher = publishername;
-//		bookPublishYear = year;
-//		pageNumber = page;
-//		
-//	}
 
 //website article constructor
-	public Citation(String articlename, String authfname, String authlname, String websitename, String publishdate, String url){
+	public Citation(String title, String authfname, String authlname, String websitename, String publisher, String publishdate, String accesseddate, String url){
 		
-		articleTitle = articlename;
-		authorFName = authfname;
-		authorLName = authlname;
+		articleTitle = title;
 		website = websitename;
+		webPublisher = publisher;
 		webPublishDate = publishdate;
+		accessDate = accesseddate;
 		this.url = url;
 		
 	}
-
-////make sure dates are entered correctly??
-//	public boolean validDateReader(){
-//		
-//		
-//		return true;
-//	}
 	
 //italicize	booktitle
 	public String htmlBookItalicize(){
-		String italicized = bookTitle;
-		italicized = "<em>" + italicized + "</em>";
-		return italicized;
+		bookTitle = "<em>" + bookTitle + "</em>";
+		return bookTitle;
 	}
 	
 //italicize	website publisher
-	public String htmlWebItalicize(){
-		String italicized = website;
-		italicized = "<em>" + italicized + "</em>";
-		return italicized;
+	public void htmlWebItalicize(){
+		website = "<em>" + website + ".</em>";
 	}	
 	
 //add quotes
-	public String htmlWebQuotes(){
-		String quoted = articleTitle;
-		quoted = "<&ldquo>" + quoted + "<&rdquo>";
-		return quoted;
+	public void htmlWebQuotes(){
+		articleTitle = "<&ldquo>" + articleTitle + "<&rdquo>";
+	}	
+	
+//format for html hyperlink
+	public void htmlUrl(){
+		url = "<ahref=\"URL\">" + url + "</a>";
 	}	
 
+//if no publisher
+	public void noWebPublisher(){
+		if (website.equals("")){
+			website = "n.p.";
+		}
+	}
 	
-////print out a book citation
-//	public String bookToString(String bookname, String authorfname, String authorlname, String publishername, int year, int page){
-//
-//		Citation MLABook = new Citation(bookname, authorfname, authorlname, publishername, year, page);
-//				
-//		return "toString";
-//	}
-//	
-////print out an article citation
-//	public String articleToString(String articlename, String authorfname, String authorlname,  String websitename, String publishdate, String url){
-//
-//		Citation MLAArticle = new Citation(articlename, authorfname, authorlname, websitename, publishdate, url);
-//		
-//	return "toString";
-//}
+//if no date
+	public void noWebDate(){
+		if (webPublishDate.equals("")){
+			webPublishDate = "n.d.";
+		}
+	}
+	
+//print out a book citation
+	public String bookToString(){
+		
+		String toString;
+		
+		toString = authorLName + ", " + authorFName + ". " + bookTitle + ". " + bookCity + ": " + bookPublisher + ", " + bookPublishYear + ". Print.";
+				
+		return toString;
+	}
+	
+	
+//print out an web citation
+	public String webToString(){
+		
+		String toString;
+		
+		toString = articleTitle + " " + website + ". " + webPublisher + ", " + webPublishDate + ". Web. " + accessDate + ". \r" + url;
+		
+	return toString;
+}
 }
