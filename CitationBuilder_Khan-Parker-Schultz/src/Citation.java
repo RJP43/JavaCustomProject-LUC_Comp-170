@@ -60,7 +60,7 @@ public class Citation {
 	
 //format for html hyperlink
 	public void htmlUrl(){
-		url = "<ahref=\"URL\">" + url + "</a>";
+		url = "<a href=\"URL\">" + url + "</a>";
 	}	
 
 //if no publisher
@@ -84,7 +84,7 @@ public class Citation {
 		
 		toString = authorLName + ", " + authorFName + ". " + bookTitle + ". " + bookCity + ": " + bookPublisher + ", " + bookPublishYear + ". Print.";
 				
-		return toString;
+		return "<p>" + toString + "</p>";
 	}
 	
 	
@@ -95,6 +95,6 @@ public class Citation {
 		
 		toString = articleTitle + " " + website + ". " + webPublisher + ", " + webPublishDate + ". Web. " + accessDate + ". \r" + url;
 		
-	return toString;
+	return "<p>" + toString + "</p>";
 }
 }
