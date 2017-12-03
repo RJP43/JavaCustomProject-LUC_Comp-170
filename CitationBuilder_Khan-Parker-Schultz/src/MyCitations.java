@@ -1,27 +1,78 @@
+/**
+ * 
+ * @authors
+ * 
+ */
+
+//import packages
+import java.util.ArrayList;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+
+
 public class MyCitations {
+	
 	private static final String FILENAME = "MyCitations.html";
+	private int websiteCount;
+	private int bookCount;
+	private ArrayList<String> citations;
+	
 
-	public static void main(String[] args) {
+//constructor
+	public MyCitations(){
+		bookCount = 0;
+		websiteCount = 0;
+		citations = new ArrayList<String>();
+	}
 
+//keep track of book citations	
+	public void increaseBookCount(){
+		bookCount++;
+	}
+
+//keep track of web citations
+	public void increaseWebsiteCount(){
+		websiteCount++;
+	}
+
+//return count of book citations
+	public int getBookCount(){
+		return bookCount;
+	}
+
+//return count of web citations
+	public int getWebsiteCount(){
+		return websiteCount;
+	}
+
+//add citation to Arraylist
+	public void addCitation(String s){
+		citations.add(s);
+	}
+
+//create html file
+	public String createFile(){
 		try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILENAME))) {
 
 			String htmlTemplateStart = "<html><head><title>My Citations</title></head>\n<body><h1>My Citations</h1>";
-			String content = "<em>Test<em>"; /*This variable will change to pull in the toString contents*/
 			String htmlTemplateEnd = "</body></html>";
-
+			
 			bw.write(htmlTemplateStart);
-			bw.write(content); /*This will print the toString contents*/
+			for (String arr : citations){
+				bw.write("<p>" + arr + "</p>");
+			}
 			bw.write(htmlTemplateEnd);
-
-			System.out.println("Open MyCitations.html file in a browser to view citations.");
 
 		} catch (IOException e) {
 
 			e.printStackTrace();
 
 		}
+		
+		String endingMessage;
+		endingMessage = "Open MyCitations.html file in a browser to view citations.";
+		return endingMessage;
 	}
+	
 }

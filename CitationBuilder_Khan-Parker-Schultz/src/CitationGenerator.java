@@ -19,7 +19,7 @@ public class CitationGenerator {
 		
 		String response;
 		
-		//Declare variables for parts of citation
+		//Declare variables for parts of citations
 		String format;
 		String sourceType;
 		String authorFName;
@@ -31,20 +31,23 @@ public class CitationGenerator {
 		String publisher;
 		String city;
 		String website;
+		String articleTitle;
+		String websiteTitle;
+		String websitePublisher;
 		String webPublishDate;
 		String webAccessDate;
 		String url;
 		int yearBookPublished;
+		String output;
+		String htmlOutput;
+		
+		MyCitations citeHolder = new MyCitations();
 	
 		System.out.println("Cite Before You Write!");
 		System.out.println("This program takes your inputs and compiles them into a bibliography in the form of an HTML file.");
 		System.out.println("Follow program instructions: ");
-		
-//		// Ask user which citation style they'd like to use
-//		System.out.println("Which format would you like your citations to be in? (MLA, APA, or Chicago)");
-//		format = userInput.nextLine();
-//		// If we included all three formats, we would have conditionals splitting the program here for all three formats.
-		
+			
+		//Do while loop to keep program running until user specifies to stop
 		do {
 		// Ask user what kind of source they're citing
 		System.out.println("What kind of source are you citing? (Book or website) ");
@@ -53,66 +56,110 @@ public class CitationGenerator {
 		
 		if (sourceType.equalsIgnoreCase("book")){
 			// Ask for author first name
-			System.out.println("Enter the author's first name.");
+			System.out.println("Enter the author's first name: ");
 			authorFName = userInput.nextLine();
 		
 			// Ask for last name
-			System.out.println("Enter the author's last name.");
+			System.out.println("Enter the author's last name: ");
 			authorLName = userInput.nextLine();
-		
-//			// If another author
-//			System.out.println("Is there another author? ");
-//			authorTwo = userInput.nextLine();
-//			if (authorTwo.equalsIgnoreCase("yes")){
-//				System.out.println("Enter the second author's first name.");
-//				author2FName = userInput.nextLine();
-//				author2LName = userInput.nextLine();
-//			}
 			
 			// Ask for title
-			System.out.println("Enter the title of your source.");
+			System.out.println("Enter the title of your source: ");
 			title = userInput.nextLine();
 			
 			// Ask for publisher
-			System.out.println("Enter the publisher of your source.");
+			System.out.println("Enter the publisher of your source: ");
 			publisher = userInput.nextLine();
 			
 			// Ask for city of publication
-			System.out.println("Enter the city the book was published in.");
+			System.out.println("Enter the city the book was published in: ");
 			city = userInput.nextLine();
 			
 			// Ask for date published
-			System.out.println("Enter the year the book was published.");
+			System.out.println("Enter the year the book was published: ");
 			yearBookPublished = userInput.nextInt();
 			
 			//blank input to avoid skipped line bug
 			userInput.nextLine();
 			
+			//Print book citation by calling citation method
 			Citation bookCitation;
 			bookCitation = new Citation(title, authorFName, authorLName, publisher, yearBookPublished, city);
-			System.out.println(bookCitation.bookToString());
+			output = bookCitation.bookToString();
+			System.out.println(output);
 			
+			//Add italicizing html tags
+			bookCitation.htmlBookItalicize();
+			
+			//Add citation to MyCitations
+			htmlOutput = bookCitation.bookToString();
+			citeHolder.addCitation(htmlOutput);
+			
+			//Increase count of book citations
+			citeHolder.increaseBookCount();
 		}
 		else if ((sourceType.equalsIgnoreCase("website"))){
+			//Ask for article title 
+			System.out.println("Enter the title of the article: ");
+			articleTitle = userInput.nextLine();
+
+			//Ask for website title
+			System.out.println("Enter the title of the website: ");
+			websiteTitle = userInput.nextLine();
+
 			//Ask for website URL
-			System.out.println("Enter the URL of the website.");
+			System.out.println("Enter the URL of the website: ");
 			url = userInput.nextLine();
-		
+			
+			//Ask for website access date
+			System.out.println("When did you access this site? ");
+			webAccessDate = userInput.nextLine();
+
+			//Ask for website publisher
+			System.out.println("Who is the publisher of the website, if available?");
+			websitePublisher = userInput.nextLine();
+
 			//Ask for website publish date
 			System.out.println("Enter the publish date of the website, if available.");
 			webPublishDate = userInput.nextLine();
+
+			//blank input to avoid skipped line bug
+			userInput.nextLine();
+
+			//Print citation using website citation method from citation class
+			Citation websiteCitation;
+			websiteCitation = new Citation(articleTitle, websiteTitle, websitePublisher, webPublishDate, webAccessDate, url);
 			
-			//Ask for website access date
-			System.out.println("When did you access this site?");
-			webAccessDate = userInput.nextLine();
+			//mutator methods
+			websiteCitation.noWebPublisher();
+			websiteCitation.noWebDate();
+			
+			output = websiteCitation.webToString();
+			System.out.println(output);
+			
+			//Add html tags
+			websiteCitation.htmlWebItalicize();
+			websiteCitation.htmlWebQuotes();
+			websiteCitation.htmlUrl();
+			
+			//Add citation to MyCitations
+			htmlOutput = websiteCitation.webToString();
+			citeHolder.addCitation(htmlOutput);
+			
+			//Increase count of book citations
+			citeHolder.increaseWebsiteCount();
+			
 		}
 		
-		
+		//Ask user if they'd like to run the program again
 		System.out.println("Would you like to run the program again? ");
 		response = userInput.nextLine();
 		}
 		while (!response.equalsIgnoreCase("no"));
 		
+		System.out.println("You created " + citeHolder.getBookCount() + " book citations.");
+		System.out.println("You created " + citeHolder.getWebsiteCount() + " website citations.");
+		System.out.println(citeHolder.createFile());
 		
 	}
 

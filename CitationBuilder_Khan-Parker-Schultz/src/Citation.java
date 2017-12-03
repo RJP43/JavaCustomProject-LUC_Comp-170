@@ -1,3 +1,8 @@
+/**
+ * 
+ * @authors
+ *
+ */
 
 public class Citation {
 	
@@ -31,7 +36,7 @@ public class Citation {
 	}
 
 //website article constructor
-	public Citation(String title, String authfname, String authlname, String websitename, String publisher, String publishdate, String accesseddate, String url){
+	public Citation(String title, String websitename, String publisher, String publishdate, String accesseddate, String url){
 		
 		articleTitle = title;
 		website = websitename;
@@ -55,7 +60,7 @@ public class Citation {
 	
 //add quotes
 	public void htmlWebQuotes(){
-		articleTitle = "<&ldquo>" + articleTitle + "<&rdquo>";
+		articleTitle = "“" + articleTitle + "”";
 	}	
 	
 //format for html hyperlink
@@ -66,14 +71,14 @@ public class Citation {
 //if no publisher
 	public void noWebPublisher(){
 		if (website.equals("")){
-			website = "n.p.";
+			website = "n.p";
 		}
 	}
 	
 //if no date
 	public void noWebDate(){
 		if (webPublishDate.equals("")){
-			webPublishDate = "n.d.";
+			webPublishDate = "n.d";
 		}
 	}
 	
