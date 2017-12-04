@@ -1,8 +1,12 @@
-/** Abdur Khan, Rebecca Parker, Sam Schultz
- * This class exports citations to an array list and adds HTML tags to them to make them readable in an HTML file. 
- * Last updated 2/3/17
- * 
- */
+/* Abdur Khan, Rebecca Parker, Sam Schultz
+* This class imports user's citations to an array list and adds HTML structure tags to each item in the array list
+* as well as the larger structural HTML tags to make the citations and otherwise plain text readable as an HTML file. 
+* The createFile method writes the citations to the HTML. 
+* This class also gathers the citations statistics that are output to user at the termination of program.
+* 
+* Last updated 12/3/17
+* 
+*/
 
 //import packages
 import java.util.ArrayList;

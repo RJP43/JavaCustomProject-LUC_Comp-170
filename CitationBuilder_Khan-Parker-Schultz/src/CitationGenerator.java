@@ -1,14 +1,14 @@
 /* Abdur Khan, Rebecca Parker, Sam Schultz
- * This program takes inputs from users and generates citations from those inputs
- * Last updated 2/3/17
+ * This program takes source information inputs from user and generates citations from those inputs.
+ * Last updated 12/3/17
  * 
- * Prepare: Import Scanner class. Declare variables for every input required by the citations and the classes in the program.
- * Input: User inputs book/website information and follows program instructions.
- * Process: In main, take user's inputs for author, date, etc. Then call Citation class methods to "assemble" citations and process them to add HTML tags
- * Citation class prints citations to main screen to verify and adds them to HTML file to export. Ask 
- * user if they'd like to generate another citation and repeat if Yes, end program if no.
+ * Prepare: Import Scanner class. Declare variables for every input required to create complete citations by fulfilling the designated class constructor parameters.
+ * Input: User inputs book/website source information and follows program instructions.
+ * Process: In main, take user's inputs for author, date, etc. Then call Citation class methods to "assemble" citations and process them by adding HTML style tags.
+ * Citation class prints citations to main screen (in plain text) and MyCitations class adds the citation to the HTML file (adding HTML file structure). 
+ * In main, ask user if they'd like to generate another citation and repeat (do while loop) if Yes, end program if no.
  * Output: Print citations as generated and write them to an HTML file with the appropriate formatting. Print number of citations of each type generated
- * when terminated
+ * when program is terminated.
  */
 import java.util.Scanner;
 
@@ -21,17 +21,13 @@ public class CitationGenerator {
 		String response;
 		
 		//Declare variables for parts of citations
-		String format;
+		
 		String sourceType;
 		String authorFName;
 		String authorLName;
-		String author2FName;
-		String author2LName;
-		String authorTwo;
 		String title;
 		String publisher;
 		String city;
-		String website;
 		String articleTitle;
 		String websiteTitle;
 		String websitePublisher;
@@ -51,7 +47,7 @@ public class CitationGenerator {
 		//Do while loop to keep program running until user specifies to stop
 		do {
 		// Ask user what kind of source they're citing
-		System.out.println("What kind of source are you citing? (Book or website) ");
+		System.out.println("What kind of source are you citing? (Book or Website) ");
 		sourceType = userInput.nextLine();
 		// Two source types for testing for now
 		
@@ -158,10 +154,11 @@ public class CitationGenerator {
 		}
 		while (!response.equalsIgnoreCase("no"));
 		
-		System.out.println("You created " + citeHolder.getBookCount() + " book citations.");
-		System.out.println("You created " + citeHolder.getWebsiteCount() + " website citations.");
+		System.out.println("You created " + citeHolder.getBookCount() + " book citation(s).");
+		System.out.println("You created " + citeHolder.getWebsiteCount() + " website citation(s).");
 		System.out.println(citeHolder.createFile());
 		
+		userInput.close();
 	}
 
 }
