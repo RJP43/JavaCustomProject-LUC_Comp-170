@@ -1,12 +1,13 @@
 /* Abdur Khan, Rebecca Parker, Sam Schultz
  * This program takes inputs from users and generates citations from those inputs
- * Last updated 11/29/17
+ * Last updated 2/3/17
  * 
- * Prepare: Call Citation class to take user's inputs for author, date, etc.
- * Input: User inputs book/article/website information 
- * Process: Process inputs using Citation class, print citations to main screen to verify and add them to HTML file to export. Ask 
+ * Prepare: Import Scanner class. Declare variables for every input required by the citations and the classes in the program.
+ * Input: User inputs book/website information and follows program instructions.
+ * Process: In main, take user's inputs for author, date, etc. Then call Citation class methods to "assemble" citations and process them to add HTML tags
+ * Citation class prints citations to main screen to verify and adds them to HTML file to export. Ask 
  * user if they'd like to generate another citation and repeat if Yes, end program if no.
- * Output: Print citations as generated and write them to an HTML file with the appropriate formatting. Print number of citations generated
+ * Output: Print citations as generated and write them to an HTML file with the appropriate formatting. Print number of citations of each type generated
  * when terminated
  */
 import java.util.Scanner;

@@ -1,7 +1,9 @@
-/**
+/** Abdur Khan, Rebecca Parker, Sam Schultz
+ *  This is the Citation class for our final Java project
+ * Last updated 2/3/17
  * 
- * @authors
- *
+ * This class establishes instance variables for book and website sources (could include journal articles as well)
+ * as well as constructors for a method to cite each source.
  */
 
 public class Citation {

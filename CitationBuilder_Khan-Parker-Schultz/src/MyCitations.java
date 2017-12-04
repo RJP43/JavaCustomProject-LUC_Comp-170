@@ -1,6 +1,6 @@
-/**
- * 
- * @authors
+/** Abdur Khan, Rebecca Parker, Sam Schultz
+ * This class exports citations to an array list and adds HTML tags to them to make them readable in an HTML file. 
+ * Last updated 2/3/17
  * 
  */
 
